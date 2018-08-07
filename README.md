@@ -8,6 +8,8 @@
 > machine's Mercurial (hg) installation,  
 > so you need to [install Mercurial](https://www.mercurial-scm.org) first. 
 
+> **Note#2**: This is a fork of 
+> [mrcrowl/vscode-hg](https://github.com/mrcrowl/vscode-hg) who seems to be slightly inactive atm. Currently the only added feature is hg annotations at the end of the active line
 -----
 
 ![Hg](images/hg.png) 
@@ -31,7 +33,8 @@
  * Automatic incoming/outgoing counters. 
 
  * Undo/rollback.
- 
+
+ * Annotations at the end of the line
 
 # Feedback & Contributing
 
@@ -52,6 +55,13 @@
   * The current branch name is shown in the bottom-left corner.
   * Click it to see a list of branches and tags that you can update to.
   * When `hg.useBookmarks` is enabled, this changes to bookmarks.
+
+## Annotations
+
+![Annotation](images/annotations.png)
+
+  * Have to have hg.annotationsEnabled set to true (requires window reload / vscode restart).
+  * Color can be changed with hg.annotationColor setting.
 
 # Settings
 
