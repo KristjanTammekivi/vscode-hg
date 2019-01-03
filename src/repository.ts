@@ -1003,8 +1003,7 @@ export class Repository implements IDisposable {
 
     private async unlocked<T>(): Promise<void> {
         let attempt = 1;
-
-        while (attempt <= 10 && await exists(path.join(this.repository.root, '.hg', 'index.lock'))) {
+        while (attempt <= 10 && await new Promise((c, e) => fs.exists(path.join(this.repository.root, '.hg', 'index.lock'), c))) {
             await timeout(Math.pow(attempt, 2) * 50);
             attempt++;
         }
