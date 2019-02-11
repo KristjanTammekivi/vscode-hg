@@ -1002,6 +1002,19 @@ export class Repository implements IDisposable {
     }
 
     private async unlocked<T>(): Promise<void> {
+
+        const exists = (path) => new Promise((resolve, reject) => {
+            fs.stat(path, (err) => {
+                if (err) {
+                    if (err.code === 'ENOENT') {
+                        return resolve(false);
+                    }
+                    reject(err);
+                }
+                return resolve(true);
+            });
+        });
+
         let attempt = 1;
 
         while (attempt <= 10 && await exists(path.join(this.repository.root, '.hg', 'index.lock'))) {
